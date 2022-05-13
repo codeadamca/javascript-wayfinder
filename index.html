@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <script src="https://kit.fontawesome.com/57a8a8c892.js" crossorigin="anonymous"></script>
 
-  <title>GitHub Contributions | Adam Thomas</title>
+  <title>Wayfinder | Adam Thomas</title>
 
   <style>
 
@@ -94,7 +94,7 @@
   <div id="codeadam">
     <a href="/"><i class="fas fa-bars"></i></a>
     &nbsp;
-    <a href="https://github.com/codeadamca/github-contributions"><i class="fab fa-github"></i></a>
+    <a href="https://github.com/codeadamca/wayfinder"><i class="fab fa-github"></i></a>
     &nbsp;
     <a href="https://codeadam.ca"><img src="https://codeadam.ca/images/code-block-white.png" width="30"></a>
   </div>
@@ -103,36 +103,12 @@
 
     <div id="step-1-box">
 
-      <a href="https://github.com/codeadamca"><img src="images/github.jpg" width="150" alt="GitHub Logo"></a>
+      <h1>
+        <i class="fas map"></i>
+        Wayfinder
+      </h1>
 
-      <div class="w3-padding-32">
-        <input class="w3-input" 
-          type="text" 
-          value="codeadamca" 
-          id="username"
-          autocomplete="off" 
-          autocapitalize="off" 
-          spellcheck="false">        
-      </div>     
-
-      <iframe width="896" 
-        height="160" 
-        frameborder="0" 
-        allowtransparency 
-        id="iframe"></iframe>
-
-      <div class="w3-padding-32">
-        <textarea class="w3-input" 
-          id="embed" 
-          rows="4"
-          autocomplete="off" 
-          autocapitalize="off" 
-          spellcheck="false"></textarea>
-      </div>  
-
-      <div class="">
-        <a href="#" id="copy"><i class="fas fa-copy"></i></a>
-      </div>
+      <div id="map"></div>
 
     </div>
 
@@ -140,57 +116,17 @@
 
   <script>
 
-  // Create references to each DOM element needed
-  const iframeRef = document.getElementById('iframe');
-  const usernameRef = document.getElementById('username');
-  const embedRef = document.getElementById('embed');
-  const copyRef = document.getElementById('copy');
+  let map = [{
+      'row':0,
+      'col':0,
+      'type':'grass',
+      'paths': null
+  }]
 
-  // Define a variable to set the delay required
-  const delay = 2000;
-
-  // Define a timer to track when typing stops
-  let timer;
-
-  // Track when useer stops typing
-  usernameRef.addEventListener('keyup', () => {
-    clearTimeout(timer);
-    timer = setTimeout(setUsername, delay)
-  });
-
-  // Use the provided username to display github contributions
-  function setUsername()
+  map.forEach(function(value)
   {
-    if(usernameRef.value == "")
-    {
-      iframeRef.src = 'https://pages.codeadam.ca/github-contributions/blank';
-    }
-    else
-    {
-      iframeRef.src = 'https://pages.codeadam.ca/github-contributions/' + usernameRef.value;  
-    }
-    embedRef.value = '<iframe src=\"https://pages.codeadam.ca/github-contributions/' + 
-      usernameRef.value + 
-      '" width="896" height="160" frameborder="0" allowtransparency id="iframe"></iframe>';
-  }
-
-  window.addEventListener('load', () => {
-    setUsername();
-  });
-
-  copyRef.addEventListener('click', (event) => {
-
-    embedRef.contenteditable = true;
-    embedRef.focus();
-    document.execCommand('selectAll');
-    document.execCommand("copy");
-    embedRef.contenteditable = false;
-
-    copyRef.focus();
-
-    event.preventDefault();
-
-  });
+      console.log(value);
+  })
 
   </script>
 
