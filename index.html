@@ -22,7 +22,7 @@
     height: 100%;
     font-family: 'Lora', serif;
     color: #fff;
-    background-color: #000;
+    background-color: #274465;
   }
 
   #step-1 {
@@ -55,7 +55,7 @@
   }
 
   .flex-container {
-    max-width: 1200px;
+    max-width: 720px;
     margin: auto;
     display: flex;
     background-color: gray;
@@ -63,16 +63,16 @@
   }
 
   .flex-container > div {
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 60px;
     text-align: center;
   }
 
   .grass {
-    background-color: green;
+    background-color: #2B8C2B;
   }
   .road {
-    background-color: grey;
+    background-color: #C3C3C3;
   }
     
   </style>
@@ -120,41 +120,120 @@
     {'type':'grass','paths':null},
   ],[
     {'type':'grass','paths':null},
-    {'type':'road','paths':null},
-    {'type':'road','paths':null},
-    {'type':'road','paths':null},
-    {'type':'road','paths':null},
-    {'type':'road','paths':null},
-    {'type':'road','paths':null},
-    {'type':'road','paths':null},
-    {'type':'road','paths':null},
-    {'type':'road','paths':null},
-    {'type':'road','paths':null},
+    {'type':'road','paths':['s']},
+    {'type':'road','paths':['w']},
+    {'type':'road','paths':['w']},
+    {'type':'road','paths':['w']},
+    {'type':'road','paths':['w','s2']},
+    {'type':'road','paths':['w']},
+    {'type':'road','paths':['w']},
+    {'type':'road','paths':['w']},
+    {'type':'road','paths':['w']},
+    {'type':'road','paths':['w']},
     {'type':'grass','paths':null},
   ],[
     {'type':'grass','paths':null},
+    {'type':'road','paths':['s']},
+    {'type':'road','paths':['e']},
+    {'type':'road','paths':['e']},
+    {'type':'road','paths':['e']},
+    {'type':'road','paths':['e2','s']},
+    {'type':'road','paths':['n','e']},
+    {'type':'road','paths':['e']},
+    {'type':'road','paths':['e']},
+    {'type':'road','paths':['s']},
+    {'type':'road','paths':['n']},
+    {'type':'grass','paths':null},
+  ],[
+    {'type':'grass','paths':null},
+    {'type':'road','paths':['s']},
+    {'type':'road','paths':['n']},
+    {'type':'grass','paths':null},
+    {'type':'grass','paths':null},
+    {'type':'road','paths':['s']},
+    {'type':'road','paths':['n']},
+    {'type':'grass','paths':null},
+    {'type':'grass','paths':null},
     {'type':'road','paths':null},
+    {'type':'road','paths':['n']},
+    {'type':'grass','paths':null},
+  ],[
+    {'type':'grass','paths':null},
+    {'type':'road','paths':['s']},
+    {'type':'road','paths':['n']},
+    {'type':'grass','paths':null},
+    {'type':'grass','paths':null},
+    {'type':'road','paths':['s']},
+    {'type':'road','paths':['n']},
+    {'type':'grass','paths':null},
+    {'type':'grass','paths':null},
     {'type':'road','paths':null},
+    {'type':'road','paths':['n']},
+    {'type':'grass','paths':null},
+  ],[
+    {'type':'grass','paths':null},
+    {'type':'road','paths':['s']},
+    {'type':'road','paths':['n']},
+    {'type':'grass','paths':null},
+    {'type':'grass','paths':null},
+    {'type':'road','paths':['s']},
+    {'type':'road','paths':['n']},
+    {'type':'grass','paths':null},
+    {'type':'grass','paths':null},
     {'type':'road','paths':null},
-    {'type':'road','paths':null},
-    {'type':'road','paths':null},
-    {'type':'road','paths':null},
-    {'type':'road','paths':null},
-    {'type':'road','paths':null},
-    {'type':'road','paths':null},
-    {'type':'road','paths':null},
+    {'type':'road','paths':['n']},
+    {'type':'grass','paths':null},
+  ],[
+    {'type':'grass','paths':null},
+    {'type':'road','paths':['s']},
+    {'type':'road','paths':['n']},
+    {'type':'road','paths':['w']},
+    {'type':'road','paths':['w']},
+    {'type':'road','paths':['s','w']},
+    {'type':'road','paths':['n','w2']},
+    {'type':'road','paths':['w']},
+    {'type':'road','paths':['w']},
+    {'type':'road','paths':['w']},
+    {'type':'road','paths':['n']},
+    {'type':'grass','paths':null},
+  ],[
+    {'type':'grass','paths':null},
+    {'type':'road','paths':['e']},
+    {'type':'road','paths':['e']},
+    {'type':'road','paths':['e']},
+    {'type':'road','paths':['e']},
+    {'type':'road','paths':['e']},
+    {'type':'road','paths':['e','n2']},
+    {'type':'road','paths':['e']},
+    {'type':'road','paths':['e']},
+    {'type':'road','paths':['e']},
+    {'type':'road','paths':['n']},
+    {'type':'grass','paths':null},
+  ],[
+    {'type':'grass','paths':null},
+    {'type':'grass','paths':null},
+    {'type':'grass','paths':null},
+    {'type':'grass','paths':null},
+    {'type':'grass','paths':null},
+    {'type':'grass','paths':null},
+    {'type':'grass','paths':null},
+    {'type':'grass','paths':null},
+    {'type':'grass','paths':null},
+    {'type':'grass','paths':null},
+    {'type':'grass','paths':null},
     {'type':'grass','paths':null},
   ]]
 
   let map = document.getElementById('map');
 
-  grid.forEach(function(row)
+  grid.forEach(function(row,rowIndex)
   {
 
-    row.forEach(function(col){
+    row.forEach(function(col,colIndex){
 
       let div = document.createElement('div');
       div.classList.add(col.type);
+      div.innerHTML = rowIndex + ',' + colIndex + (col.paths ? '<br>' + col.paths : '');
       map.appendChild(div);
       console.log('here');
 
