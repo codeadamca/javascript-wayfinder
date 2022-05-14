@@ -55,6 +55,7 @@
   }
 
   .flex-container {
+    position: relative;
     max-width: 720px;
     margin: auto;
     display: flex;
@@ -65,7 +66,9 @@
   .flex-container > div {
     width: 60px;
     height: 60px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .grass {
@@ -73,6 +76,13 @@
   }
   .road {
     background-color: #C3C3C3;
+  }
+
+  #car {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    background-color: #C42950;
   }
     
   </style>
@@ -97,7 +107,9 @@
         Wayfinder
       </h1>
 
-      <div id="map" class="flex-container"></div>
+      <div id="map" class="flex-container">
+        <div id="car"></div>
+      </div>
 
     </div>
 
@@ -124,7 +136,7 @@
     {'type':'road','paths':['w']},
     {'type':'road','paths':['w']},
     {'type':'road','paths':['w']},
-    {'type':'road','paths':['w','s2']},
+    {'type':'road','paths':['w','ss']},
     {'type':'road','paths':['w']},
     {'type':'road','paths':['w']},
     {'type':'road','paths':['w']},
@@ -137,8 +149,8 @@
     {'type':'road','paths':['e']},
     {'type':'road','paths':['e']},
     {'type':'road','paths':['e']},
-    {'type':'road','paths':['e2','s']},
-    {'type':'road','paths':['n','e']},
+    {'type':'road','paths':['ee','s']},
+    {'type':'road','paths':['nww','e']},
     {'type':'road','paths':['e']},
     {'type':'road','paths':['e']},
     {'type':'road','paths':['s']},
@@ -154,7 +166,7 @@
     {'type':'road','paths':['n']},
     {'type':'grass','paths':null},
     {'type':'grass','paths':null},
-    {'type':'road','paths':null},
+    {'type':'road','paths':['s']},
     {'type':'road','paths':['n']},
     {'type':'grass','paths':null},
   ],[
@@ -167,7 +179,7 @@
     {'type':'road','paths':['n']},
     {'type':'grass','paths':null},
     {'type':'grass','paths':null},
-    {'type':'road','paths':null},
+    {'type':'road','paths':['s']},
     {'type':'road','paths':['n']},
     {'type':'grass','paths':null},
   ],[
@@ -180,7 +192,7 @@
     {'type':'road','paths':['n']},
     {'type':'grass','paths':null},
     {'type':'grass','paths':null},
-    {'type':'road','paths':null},
+    {'type':'road','paths':['s']},
     {'type':'road','paths':['n']},
     {'type':'grass','paths':null},
   ],[
@@ -189,8 +201,8 @@
     {'type':'road','paths':['n']},
     {'type':'road','paths':['w']},
     {'type':'road','paths':['w']},
-    {'type':'road','paths':['s','w']},
-    {'type':'road','paths':['n','w2']},
+    {'type':'road','paths':['see','w']},
+    {'type':'road','paths':['n','ww']},
     {'type':'road','paths':['w']},
     {'type':'road','paths':['w']},
     {'type':'road','paths':['w']},
@@ -203,7 +215,7 @@
     {'type':'road','paths':['e']},
     {'type':'road','paths':['e']},
     {'type':'road','paths':['e']},
-    {'type':'road','paths':['e','n2']},
+    {'type':'road','paths':['e','nn']},
     {'type':'road','paths':['e']},
     {'type':'road','paths':['e']},
     {'type':'road','paths':['e']},
@@ -235,11 +247,67 @@
       div.classList.add(col.type);
       div.innerHTML = rowIndex + ',' + colIndex + (col.paths ? '<br>' + col.paths : '');
       map.appendChild(div);
-      console.log('here');
 
     });
 
   });
+
+  let current = {'x':1,'y':1};
+  let route = [];
+  let counter = 0;
+
+  const car = document.getElementById('car');
+
+  function nextPath()
+  {
+
+    let paths = grid[current.y][current.x].paths;
+    let dir = paths[random(paths.length)];
+
+    for (let i in dir) {
+      route.push(dir[i]);
+    }    
+
+  }
+
+  function move()
+  {
+    
+    if(counter >= route.length)
+    {
+      nextPath();
+    }
+
+    switch(route[counter])   
+    {
+      case 'n':
+        current.y --;
+        break;
+      case 'e':
+        current.x ++;
+        break;
+      case 's':
+        current.y ++;
+        break;
+      case 'w':
+        current.x --;
+        break;
+    }
+
+    car.style.left = (current.x * 60) + 'px';
+    car.style.top = (current.y * 60) + 'px';
+    
+    setTimeout(move, 200);
+
+    counter ++;
+
+  }
+
+  move();
+
+  function random(max){
+    return Math.floor(Math.random() * max);
+  }
 
   </script>
 
