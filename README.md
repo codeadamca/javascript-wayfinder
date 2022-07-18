@@ -1,4 +1,4 @@
-# A Basic Webpage Tinkering with the Wayfinding Algorithms
+# A Basic Webpage Tinkering with Wayfinding Algorithms
 
 A basic wayfinding example using JavaScript.
 
