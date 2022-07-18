@@ -6,6 +6,8 @@ The Wayfinder tool is available to view at:
 
 https://pages.codeadam.ca/wayfinder
 
+![Wayfinder](https://github.com/codeadamca/wayfinder/blob/main/screenshot-wayfinder.png?raw=true)
+
 ## Requirements
 
 * [Sample Wayfinder](https://pages.codeadam.ca/wayfinder)
