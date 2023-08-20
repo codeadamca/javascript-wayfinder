@@ -8,7 +8,9 @@ https://pages.codeadam.ca/wayfinder
 
 ![Wayfinder](https://github.com/codeadamca/wayfinder/blob/main/screenshot-wayfinder.png?raw=true)
 
-## Requirements
+***
+
+## Repo Resources
 
 * [Sample Wayfinder](https://pages.codeadam.ca/wayfinder)
 
