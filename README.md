@@ -2,11 +2,10 @@
 
 A basic wayfinding example using JavaScript.
 
-The Wayfinder tool is available to view at:
+> The Wayfinder tool is available to view at:  
+> https://pages.codeadam.ca/wayfinder
 
-https://pages.codeadam.ca/wayfinder
-
-![Wayfinder](https://github.com/codeadamca/wayfinder/blob/main/screenshot-wayfinder.png?raw=true)
+![Wayfinder](_readme/screenshot-wayfinder.png)
 
 ***
 
